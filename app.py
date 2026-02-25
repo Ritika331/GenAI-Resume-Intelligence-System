@@ -33,19 +33,45 @@ if st.button("Analyze Resume"):
         else:
             result = analyze_resume(resume_text, job_description)
 
+            score = result["ATS_score"]
+            level = result["Match_Level"]
+            suggestion = result["Suggestion"]
+
             st.success("Analysis Complete ✅")
 
+            st.divider()
+
+            # Score Section
             st.subheader("📊 ATS Score")
-            st.metric(label="Match Percentage", value=f"{result['ATS_score']} %")
+            st.metric(label="Match Percentage", value=f"{score} %")
 
-            st.subheader("✅ Matched Skills")
-            if result["Matched_Skills"]:
-                st.write(result["Matched_Skills"])
+            # Color-coded interpretation
+            if level == "Low Match":
+                st.error(f"🔴 {level}")
+            elif level == "Medium Match":
+                st.warning(f"🟡 {level}")
             else:
-                st.write("No matched skills found.")
+                st.success(f"🟢 {level}")
 
-            st.subheader("❌ Missing Skills")
-            if result["Missing_Skills"]:
-                st.write(result["Missing_Skills"])
-            else:
-                st.write("No missing skills detected.")
+            st.info(f"💡 Suggestion: {suggestion}")
+
+            st.divider()
+
+            # Skills Section
+            col1, col2 = st.columns(2)
+
+            with col1:
+                st.subheader("✅ Matched Skills")
+                if result["Matched_Skills"]:
+                    for skill in result["Matched_Skills"]:
+                        st.write(f"✔️ {skill}")
+                else:
+                    st.write("No matched skills found.")
+
+            with col2:
+                st.subheader("❌ Missing Skills")
+                if result["Missing_Skills"]:
+                    for skill in result["Missing_Skills"]:
+                        st.write(f"❗ {skill}")
+                else:
+                    st.write("No missing skills detected.")

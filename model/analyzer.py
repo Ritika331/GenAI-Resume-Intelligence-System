@@ -47,8 +47,21 @@ def analyze_resume(resume_text, job_description):
     matched_skills = list(set(resume_skills) & set(job_skills))
     missing_skills = list(set(job_skills) - set(resume_skills))
 
+        # Match interpretation
+    if score < 40:
+        level = "Low Match"
+        suggestion = "Consider adding more relevant technical skills from the job description."
+    elif 40 <= score < 70:
+        level = "Medium Match"
+        suggestion = "You match partially. Try improving missing skills to increase your score."
+    else:
+        level = "High Match"
+        suggestion = "Strong alignment with job requirements. Your resume is well optimized."
+
     return {
         "ATS_score": score,
+        "Match_Level": level,
+        "Suggestion": suggestion,
         "Matched_Skills": matched_skills,
         "Missing_Skills": missing_skills
     }
