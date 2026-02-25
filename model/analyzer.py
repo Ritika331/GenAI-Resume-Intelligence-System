@@ -1,20 +1,24 @@
+import json
 from sklearn.metrics.pairwise import cosine_similarity
 from model.embedding import get_embedding
 
 
+# Load skills from external JSON file
+with open("skills.json", "r") as file:
+    skills_data = json.load(file)
+
+# Flatten all skills into one list
+ALL_SKILLS = []
+for category in skills_data.values():
+    ALL_SKILLS.extend(category)
+
+
 def extract_skills(text):
     """
-    Simple keyword-based skill extraction
+    Extract skills using external skill database
     """
-    skills_list = [
-        "python", "machine learning", "deep learning",
-        "nlp", "data analysis", "tensorflow",
-        "pytorch", "sql", "communication"
-    ]
-
     text = text.lower()
-    found_skills = [skill for skill in skills_list if skill in text]
-
+    found_skills = [skill for skill in ALL_SKILLS if skill in text]
     return found_skills
 
 

@@ -1,0 +1,64 @@
+{
+  "programming_languages": [
+    "python",
+    "java",
+    "c++",
+    "c",
+    "javascript",
+    "typescript",
+    "go",
+    "ruby"
+  ],
+  "backend": [
+    "springboot",
+    "django",
+    "flask",
+    "nodejs",
+    "express",
+    "fastapi",
+    "rest api",
+    "microservices"
+  ],
+  "frontend": [
+    "react",
+    "angular",
+    "vue",
+    "html",
+    "css",
+    "bootstrap",
+    "tailwind"
+  ],
+  "databases": [
+    "mysql",
+    "postgresql",
+    "mongodb",
+    "sqlite",
+    "oracle",
+    "redis"
+  ],
+  "devops_cloud": [
+    "docker",
+    "kubernetes",
+    "aws",
+    "azure",
+    "gcp",
+    "jenkins",
+    "ci/cd"
+  ],
+  "ai_ml": [
+    "machine learning",
+    "deep learning",
+    "nlp",
+    "tensorflow",
+    "pytorch",
+    "scikit-learn",
+    "data analysis"
+  ],
+  "tools": [
+    "git",
+    "github",
+    "linux",
+    "jira",
+    "postman"
+  ]
+}
